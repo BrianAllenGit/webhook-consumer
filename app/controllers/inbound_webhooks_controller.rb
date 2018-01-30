@@ -1,0 +1,2 @@
+class InboundWebhooksController < ApplicationController
+end
