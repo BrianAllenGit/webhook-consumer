@@ -1,12 +1,12 @@
 class InboundWebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
+
   def index
     @customers = Customer.all
   end
 
   def receive
-    customer_params = data.dig('customer')
+    customer_params = params[:data].dig('customer')
     Customer.find_or_create_by!(
       first_name: customer_params.dig('first_name'),
       last_name: customer_params.dig('last_name'),
