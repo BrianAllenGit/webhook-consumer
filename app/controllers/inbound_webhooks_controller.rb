@@ -5,7 +5,7 @@ class InboundWebhooksController < ApplicationController
     puts "<<<<<<<<<<< PRODUCT CREATED WEBHOOK INITIATED >>>>>>>>>>>>>>>"
     puts params
     customer_params = params[:data].dig('customer')
-    Customer.find_or_create_by!{
+    Customer.find_or_create_by!(
       first_name: customer_params.dig('first_name'),
       last_name: customer_params.dig('last_name'),
     ).tap do |customer|
