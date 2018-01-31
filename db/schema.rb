@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131175115) do
+ActiveRecord::Schema.define(version: 20180131180603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20180131175115) do
     t.date "date_of_birth"
     t.integer "points_balance"
     t.string "referral_url"
-    t.string "vip_tier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.integer "vip_tier_id"
   end
 
 end
