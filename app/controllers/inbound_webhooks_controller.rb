@@ -7,6 +7,7 @@ class InboundWebhooksController < ApplicationController
 
   def receive
     customer_params = params[:data].dig('customer')
+    puts customer_params.dig('id')
     Customer.find_or_create_by!(
       first_name: customer_params.dig('first_name'),
       last_name: customer_params.dig('last_name'),
