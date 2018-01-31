@@ -13,7 +13,7 @@ class InboundWebhooksController < ApplicationController
       customer.email = customer_params.dig('email')
       customer.date_of_birth = customer_params.dig('date_of_birth')
       customer.points_balance = customer_params.dig('points_balance')
-      customer.vip_tier_id = customer.dig('vip_tier', 'id')
+      customer.vip_tier_id = customer_params.dig('vip_tier', 'id')
       customer.save!
     end
     status = rand(0..50) == 50 ?  rand(200..500) : 200
