@@ -1,24 +1,47 @@
-# README
+# Webhook Testing App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+### Ruby + Ruby manager
+You will need to have ruby installed - installing via rbenv (or rvm) is the way to go here. If you only have system ruby you will not be able to install gems. We recommend rvm
+```
+\curl -sSL https://get.rvm.io | bash -s stable
+rvm install "ruby-2.3.1"
+rvm use
+gem install bundler
+```
 
-* Ruby version
+### Git, Heroku
+```
+brew update
+brew install heroku git
+```
 
-* System dependencies
+### GitHub
+You should already have an account but ensure you have setup [SSH to your local machine](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
-* Configuration
+## Setting the webhook testing app
+```bash
+$ git clone git@github.com:smile-io/webhook-testing-app.git
+$ cd webhook-testing-app
+$ bundle install
+```
 
-* Database creation
+## Running the webhook testing app
+- From with the webhook consumer repo directory
+```bash
+$ rails db:setup
+$ rails s -p 8080
+```
 
-* Database initialization
+## Deployment
 
-* How to run the test suite
+http:/webhook-consumer.herokuapps.com
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+# Setup (you only need to do this once)
+$ heroku git:remote --app webhook-consumer --remote production
 
-* Deployment instructions
-
-* ...
+# Deploy
+$ git push heroku production
+```
