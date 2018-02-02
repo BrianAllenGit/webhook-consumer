@@ -40,7 +40,7 @@ http:/webhook-consumer.herokuapps.com
 
 ```bash
 # Setup (you only need to do this once)
-$ heroku git:remote --app webhook-consumer --remote production
+$ heroku git:remote --app smile-webhook-auditor --remote production
 
 # Deploy
 $ git push heroku production
