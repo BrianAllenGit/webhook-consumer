@@ -7,10 +7,14 @@ class InboundWebhooksController < ApplicationController
 
   def receive
     status = rand(0..50) == 50 ?  rand(200..500) : 200
-    return render status: status, json: @controller.to_json if status != 200
+    if status != 200
+      return render status: status, json: @controller.to_json
+    end
 
     customer_params = params[:data].dig('customer')
-    return render status: status, json: @controller.to_json if customer_params.dig('email') == 'ppogba@example.com'
+    if customer_params.dig('is_test') == true
+      return render status: status, json: @controller.to_json
+    end
 
     Customer.find_or_create_by!(customer_id: customer_params.dig('id')).tap do |customer|
       customer.account_id = params[:account_id]
