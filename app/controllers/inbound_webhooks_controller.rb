@@ -10,7 +10,7 @@ class InboundWebhooksController < ApplicationController
     return render status: status, json: @controller.to_json if status != 200
 
     customer_params = params[:data].dig('customer')
-    return render status: status, json: @controller.to_json if customer_params.dig('id') == 1
+    return render status: status, json: @controller.to_json if customer_params.dig('email') == 'ppogba@example.com'
 
     Customer.find_or_create_by!(customer_id: customer_params.dig('id')).tap do |customer|
       customer.account_id = params[:account_id]
