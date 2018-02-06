@@ -3,5 +3,4 @@ namespace :smile do
   task clear_customer_table: :environment do
     Customer.destroy_all
   end
-
 end
